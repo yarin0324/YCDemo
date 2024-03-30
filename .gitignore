@@ -1,0 +1,11 @@
+﻿################################################################################
+# 這個 .gitignore 檔案由 Microsoft(R) Visual Studio 自動建立。
+################################################################################
+
+/.vs/YCDemo/FileContentIndex
+/src/Api/.vs/Api
+/src/Api/obj
+/src/Web/.vs/Web
+/src/Web/obj
+/src/Web/wwwroot/lib
+/.vs
