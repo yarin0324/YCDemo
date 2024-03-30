@@ -1,6 +1,6 @@
 ﻿namespace Infrastructure
 {
-    public enum DBProvider
+    public enum DbProvider
     {
         /// <summary>
         /// Oracle

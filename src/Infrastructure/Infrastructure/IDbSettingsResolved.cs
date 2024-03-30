@@ -5,7 +5,7 @@
         /// <summary>
         /// 連線類型
         /// </summary>
-        DBProvider ConnectionType { get; }
+        DbProvider ConnectionType { get; }
 
         /// <summary>
         /// 連線字串

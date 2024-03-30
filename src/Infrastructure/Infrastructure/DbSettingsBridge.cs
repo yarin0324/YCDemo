@@ -11,7 +11,7 @@ namespace Infrastructure
             _dbSettings = dbSettings ?? throw new ArgumentNullException(nameof(dbSettings));
         }
 
-        public DBProvider ConnectionType => _dbSettings.Value.ConnectionType.ConvertFromString<DBProvider>();
+        public DbProvider ConnectionType => _dbSettings.Value.ConnectionType.ConvertFromString<DbProvider>();
 
         public string ConnectionString => _dbSettings.Value.ConnectionStrings[_dbSettings.Value.ConnectionType];
     }
