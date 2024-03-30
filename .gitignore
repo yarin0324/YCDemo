@@ -9,3 +9,11 @@
 /src/Web/obj
 /src/Web/wwwroot/lib
 /.vs
+/src/Api/bin/Debug/net6.0
+/src/Dao/Dao/bin/Debug/net6.0
+/src/Dao/Dao/obj
+/src/Infrastructure/Infrastructure/bin/Debug/net6.0
+/src/Infrastructure/Infrastructure/obj
+/src/Service/Service/bin/Debug/net6.0
+/src/Service/Service/obj
+/src/Web/bin/Debug/net6.0
