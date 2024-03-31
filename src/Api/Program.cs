@@ -1,23 +1,37 @@
+using Api;
+using Serilog;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+//資安: 避免橫幅抓取，移除 Server Header 資訊
+builder.WebHost.UseKestrel(option => option.AddServerHeader = false);
 
-builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+Log.Logger = new LoggerConfiguration()
+    .ReadFrom.Configuration(builder.Configuration)
+    .CreateLogger();
 
-var app = builder.Build();
-
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+try
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
+    Log.Information("網站開始啟動...");
+
+    Host.CreateDefaultBuilder(args)
+        .UseSerilog()
+        .ConfigureWebHostDefaults(webBuilder =>
+        {
+            webBuilder.UseStartup<Startup>();
+        })
+        .Build()
+        .Run();
+
+    return 0;
 }
+catch (Exception ex)
+{
+    Log.Fatal(ex, "發生未預期錯誤...");
 
-app.UseAuthorization();
-
-app.MapControllers();
-
-app.Run();
+    return 1;
+}
+finally
+{
+    Log.CloseAndFlush();
+}
