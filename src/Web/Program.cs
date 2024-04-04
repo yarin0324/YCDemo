@@ -7,11 +7,11 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddRazorPages();
 
-var app = builder.Build();
-
 var startup = new Startup(builder.Configuration);
 
 startup.ConfigureServices(builder.Services);
+
+var app = builder.Build();
 
 // Using a custom DI container.
 builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory());
