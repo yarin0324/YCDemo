@@ -1,6 +1,6 @@
 ﻿using Service;
 
-namespace Web.IoC
+namespace Api.IoC
 {
     public static class ServiceDependencyInjection
     {

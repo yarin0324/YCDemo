@@ -2,7 +2,7 @@
 
 namespace Web.Models
 {
-    public class ResponseResultModel
+    public class ResponseResult
     {
         public bool IsSuccess { get; set; }
 
@@ -31,7 +31,7 @@ namespace Web.Models
         /// <param name="success"></param>
         /// <param name="message"></param>
         /// <param name="result"></param>
-        public ResponseResultModel(bool success, string message = "", dynamic? result = null)
+        public ResponseResult(bool success, string message = "", dynamic? result = null)
         {
             this.IsSuccess = success;
             this.Message = message;

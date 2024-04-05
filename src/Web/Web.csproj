@@ -15,8 +15,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Entity\Entity\Entity.csproj" />
     <ProjectReference Include="..\Infrastructure\Infrastructure\Infrastructure.csproj" />
-    <ProjectReference Include="..\Service\Service\Service.csproj" />
   </ItemGroup>
 
 </Project>

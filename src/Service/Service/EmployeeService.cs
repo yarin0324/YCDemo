@@ -1,10 +1,52 @@
-﻿namespace Service
+﻿using Dao;
+using Dao.Utils;
+using Entity;
+
+namespace Service
 {
     public class EmployeeService : IEmployeeService
     {
-        public void CreateEmployee()
+        #region Properties
+
+        private readonly IUnitOfWork _unitOfWork;
+
+        #endregion
+
+        public EmployeeService(IUnitOfWork unitOfWork)
         {
-            throw new NotImplementedException();
+            this._unitOfWork = unitOfWork;
+        }
+
+        public bool CreateEmployee(Employee employeeInfo)
+        {
+            var rowCount = _unitOfWork.Get<EmployeeRepository>().Add(employeeInfo);
+
+            _unitOfWork.SaveChanges();
+
+            return rowCount > 0;
+        }
+
+        public Employee ReadEmployee(Employee employeeInfo)
+        {
+            return _unitOfWork.Get<EmployeeRepository>().Get(employeeInfo);
+        }
+
+        public bool UpdateEmployee(Employee employeeInfo)
+        {
+            var rowCount = _unitOfWork.Get<EmployeeRepository>().Update(employeeInfo);
+
+            _unitOfWork.SaveChanges();
+
+            return rowCount > 0;
+        }
+
+        public bool DeleteEmployee(Employee employeeInfo)
+        {
+            var rowCount = _unitOfWork.Get<EmployeeRepository>().Remove(employeeInfo);
+
+            _unitOfWork.SaveChanges();
+
+            return rowCount > 0;
         }
     }
 }

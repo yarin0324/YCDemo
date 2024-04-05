@@ -18,3 +18,5 @@
 /src/Service/Service/obj
 /src/Web/bin/Debug/net6.0
 *.dll
+/src/Entity/Entity/obj
+/src/Entity/Entity/bin/Debug/net6.0

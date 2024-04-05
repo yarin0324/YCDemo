@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Connections;
+﻿using Dao.Utils;
+using Infrastructure;
 using Serilog;
 using Serilog.Events;
 
@@ -33,6 +34,33 @@ namespace Api
             {
                 options.CustomSchemaIds(type => type.ToString());
             });
+            
+            #region 解析 DbSettings
+
+            services.Configure<DbSettings>(Configuration.GetSection("DbSettings"));
+            
+            // 注入經橋接後被解析的 DbSettings
+            services.AddScoped<IDbSettingsResolved, DbSettingsBridge>();
+
+            #endregion
+
+            #region 註冊 ConnectionFactory
+
+            services.AddScoped<IConnectionFactory, ConnectionFactory>();
+
+            #endregion
+
+            #region 每一 Request 都注入一個新實例
+
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
+
+            #endregion
+
+            #region 註冊 功能模組 Service
+
+            IoC.ServiceDependencyInjection.Register(services);
+
+            #endregion
 
             services.AddHttpContextAccessor();
 
@@ -48,7 +76,7 @@ namespace Api
             });
 
             services.AddServerSideBlazor();
-                              
+
             // Add OpenAPI v3 document
             services.AddOpenApiDocument();
 
@@ -68,7 +96,6 @@ namespace Api
             {
                 app.UseOpenApi();       // serve OpenAPI/Swagger documents
                 app.UseSwaggerUi3();    // serve Swagger UI
-                //app.UseSwagger();
                 app.UseDeveloperExceptionPage();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "WebApiCore v1"));
             }

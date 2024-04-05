@@ -1,5 +1,4 @@
 ﻿using Autofac;
-using Infrastructure;
 
 namespace Web
 {
@@ -14,23 +13,12 @@ namespace Web
 
         public void ConfigureServices(IServiceCollection services)
         {
-            //#region 註冊 Configuration
+            #region 註冊 Configuration
 
             services.AddSingleton(Configuration);
 
-            //#endregion
-
-            //#region 解析 DbSettings
-
-            //services.Configure<DbSettings>(Configuration.GetSection("DbSettings"));
-
-            //// 注入經橋接後被解析的 DbSettings
-            //services.AddScoped<IDbSettingsResolved, DbSettingsBridge>();
-
-            //#endregion
-
-            IoC.ServiceDependencyInjection.Register(services);
-
+            #endregion
+            
             services.AddRazorPages();
         }
 
