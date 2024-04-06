@@ -30,8 +30,18 @@ namespace Web.Controllers
             return View();
         }
 
+        /// <summary>
+        /// 建立一筆員工資料
+        /// </summary>
+        /// <param name="employeeInfo"></param>
+        /// <returns></returns>
         public ActionResult CreateEmployee(Employee employeeInfo)
         {
+            if (string.IsNullOrWhiteSpace(employeeInfo.IdentityNo) || string.IsNullOrWhiteSpace(employeeInfo.Name))
+            {
+                return Json(new ResponseResult(false, "參數檢核失敗!"));
+            }
+
             var client = new RestClient(Url);
             var request = new RestRequest(Url);
             
@@ -46,6 +56,11 @@ namespace Web.Controllers
                 Json(new ResponseResult(false, "人員資料新增失敗!"));
         }
 
+        /// <summary>
+        /// 讀取員工資料
+        /// </summary>
+        /// <param name="employeeInfo"></param>
+        /// <returns></returns>
         public ActionResult ReadEmployee(Employee employeeInfo)
         {
             if (string.IsNullOrWhiteSpace(employeeInfo.IdentityNo))
@@ -66,8 +81,18 @@ namespace Web.Controllers
                 Json(new ResponseResult(false, "人員資料讀取失敗!"));
         }
 
+        /// <summary>
+        /// 更新一筆員工資料
+        /// </summary>
+        /// <param name="employeeInfo"></param>
+        /// <returns></returns>
         public ActionResult UpdateEmployee(Employee employeeInfo)
         {
+            if (string.IsNullOrWhiteSpace(employeeInfo.IdentityNo) || string.IsNullOrWhiteSpace(employeeInfo.Name))
+            {
+                return Json(new ResponseResult(false, "參數檢核失敗!"));
+            }
+
             var client = new RestClient(Url);
             var request = new RestRequest(Url);
 
@@ -82,8 +107,18 @@ namespace Web.Controllers
                 Json(new ResponseResult(false, "人員資料修改失敗!"));
         }
 
+        /// <summary>
+        /// 刪除一筆員工資料
+        /// </summary>
+        /// <param name="employeeInfo"></param>
+        /// <returns></returns>
         public ActionResult DeleteEmployee(Employee employeeInfo)
         {
+            if (string.IsNullOrWhiteSpace(employeeInfo.IdentityNo))
+            {
+                return Json(new ResponseResult(false, "參數檢核失敗!"));
+            }
+
             var client = new RestClient(Url);
             var request = new RestRequest(Url);
 
