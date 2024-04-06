@@ -4,6 +4,8 @@
 
 **整體拆分為Web、API、Service、Dao、Entity、Infrastructure等六部分，分別說明如下:**
 
+![image](https://github.com/yarin0324/YCDemo/blob/main/%E6%9E%B6%E6%A7%8B%E8%AA%AA%E6%98%8E.jpg)
+
 ***
 
 **展示層**
