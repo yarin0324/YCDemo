@@ -1,0 +1,78 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Index";
+}
+
+<h2>人員基本資料 - 修改</h2>
+
+<div>
+    <div style="display: inline;"><a href="@Url.Action("Index", "Home")"><button>上一頁</button></a></div>
+    <div style="display: inline;"><button id="save-employee-info">儲存</button></div>
+    <div style="display: inline;"><button id="clear-employee-info">清除</button></div>
+</div>
+
+<br />
+<hr />
+<br />
+
+<table>
+    <tr>
+        <th>身份證字號</th>
+        <td>
+            <input type="text" id="employee-id-no" placeholder="請輸入使用者之身分字號" />
+        </td>
+        <th>姓名</th>
+        <td>
+            <input type="text" id="employee-name" placeholder="請輸入使用者之姓名" />
+        </td>
+    </tr>
+</table>
+
+@section Scripts {
+    <script>
+
+        var $id = $('#employee-id-no');
+        var $name = $('#employee-name');
+        var $save = $('#save-employee-info');
+        var $clear = $('#clear-employee-info');
+
+        function updateEmployee() {
+            $.ajax({
+                type: "POST",
+                url: updateEmployeeUrl,
+                dataType: "json",
+                data: {
+                    employeeInfo: {
+                        IdentityNo: $id.val(),
+                        Name: $name.val()
+                    }
+                },
+                success: function (response) {
+                    if (!response.isSuccess) {
+                        alert('更新作業失敗!');
+                        return;
+                    }
+
+                    alert('更新作業成功!');
+                },
+                error: function (thrownError) {
+                    console.log(thrownError);
+                }
+            });
+        }        
+        
+        function clear() {
+            $id.val('');
+            $name.val('');
+        }
+
+        $(document).ready(function () {
+            $save.off('click').on('click', updateEmployee);
+            $clear.off('click').on('click', clear)
+        });
+
+    </script>
+}

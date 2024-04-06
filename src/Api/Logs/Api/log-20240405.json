@@ -1,0 +1,10 @@
+{"@t":"2024-04-05T09:59:34.3590341Z","@mt":"網站開始啟動..."}
+{"@t":"2024-04-05T09:59:37.4270532Z","@mt":"Now listening on: {address}","address":"http://localhost:5095","EventId":{"Id":14,"Name":"ListeningOnAddress"},"SourceContext":"Microsoft.Hosting.Lifetime"}
+{"@t":"2024-04-05T09:59:37.4331212Z","@mt":"Application started. Press Ctrl+C to shut down.","SourceContext":"Microsoft.Hosting.Lifetime"}
+{"@t":"2024-04-05T09:59:37.4335315Z","@mt":"Hosting environment: {envName}","envName":"Development","SourceContext":"Microsoft.Hosting.Lifetime"}
+{"@t":"2024-04-05T09:59:37.4339276Z","@mt":"Content root path: {contentRoot}","contentRoot":"C:\\Users\\Yarin\\source\\repos\\YCDemo\\src\\Api","SourceContext":"Microsoft.Hosting.Lifetime"}
+{"@t":"2024-04-05T10:26:37.3556493Z","@mt":"網站開始啟動..."}
+{"@t":"2024-04-05T10:26:38.8338347Z","@mt":"Now listening on: {address}","address":"http://localhost:5095","EventId":{"Id":14,"Name":"ListeningOnAddress"},"SourceContext":"Microsoft.Hosting.Lifetime"}
+{"@t":"2024-04-05T10:26:38.8409853Z","@mt":"Application started. Press Ctrl+C to shut down.","SourceContext":"Microsoft.Hosting.Lifetime"}
+{"@t":"2024-04-05T10:26:38.8414199Z","@mt":"Hosting environment: {envName}","envName":"Development","SourceContext":"Microsoft.Hosting.Lifetime"}
+{"@t":"2024-04-05T10:26:38.8418241Z","@mt":"Content root path: {contentRoot}","contentRoot":"C:\\Users\\Yarin\\source\\repos\\YCDemo\\src\\Api","SourceContext":"Microsoft.Hosting.Lifetime"}

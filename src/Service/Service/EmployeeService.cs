@@ -26,9 +26,9 @@ namespace Service
             return rowCount > 0;
         }
 
-        public Employee ReadEmployee(Employee employeeInfo)
+        public IEnumerable<Employee> ReadEmployee(Employee employeeInfo)
         {
-            return _unitOfWork.Get<EmployeeRepository>().Get(employeeInfo);
+            return _unitOfWork.Get<EmployeeRepository>().GetBy(employeeInfo);
         }
 
         public bool UpdateEmployee(Employee employeeInfo)

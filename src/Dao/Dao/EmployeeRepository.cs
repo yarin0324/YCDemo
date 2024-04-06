@@ -25,7 +25,32 @@ namespace Dao
 
         public override IEnumerable<Employee> GetAll()
         {
-            throw new NotImplementedException();
+            StringBuilder sqlCommand = new StringBuilder(@"
+                SELECT
+                    IdentityNo, 
+                    Name 
+                FROM EMPLOYEE"
+            );
+
+            return Query<Employee>(sqlCommand.ToString());
+        }
+
+        public IEnumerable<Employee> GetBy(Employee entity)
+        {
+            StringBuilder sqlCommand = new StringBuilder(@"
+                SELECT
+                    IdentityNo, 
+                    Name 
+                FROM EMPLOYEE
+                WHERE 1=1"
+            );
+
+            if (!string.IsNullOrWhiteSpace(entity.IdentityNo))
+            {
+                sqlCommand.AppendLine(@"AND IdentityNo = @IdentityNo");
+            }
+
+            return Query<Employee>(sqlCommand.ToString(), entity);
         }
 
         public override int Add(Employee entity)

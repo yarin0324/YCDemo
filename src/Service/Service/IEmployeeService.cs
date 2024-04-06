@@ -16,7 +16,7 @@ namespace Service
         /// </summary>
         /// <param name="employeeInfo">employee entity</param>
         /// <returns>Employee 資訊查詢結果 </returns>
-        Employee ReadEmployee(Employee employeeInfo);
+        IEnumerable<Employee> ReadEmployee(Employee employeeInfo);
 
         /// <summary>
         /// Update Employee Info

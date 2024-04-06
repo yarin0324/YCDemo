@@ -1,5 +1,4 @@
-﻿@using Web.Pages.Shared
-@*
+﻿@*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
@@ -9,17 +8,79 @@
 
 <h2>人員基本資料</h2>
 
+<div>
+    <div style="display: inline;"><button id="read-employee-info">查詢</button></div>
+    <div style="display: inline;"><a id="create-employee-info" href="@Url.Action("Create", "Home")"><button>新增</button></a></div>
+    <div style="display: inline;"><a id="update-employee-info" href="@Url.Action("Update", "Home")"><button>修改</button></a></div>
+    <div style="display: inline;"><a id="delete-employee-info" href="@Url.Action("Delete", "Home")"><button>刪除</button></a></div>
+</div>
+
+<h2>查詢條件</h2>
+
+<br/>
+<hr/>
+<br/>
+
 <table>
     <tr>
-        <th>姓名</th>
+        <th>身份證字號</th>
         <td>
-            XXX
-        </td>
-        <th>性別</th>
-        <td>
-            男
+            <input type="text" id="employee-id-no" placeholder="請輸入欲查詢使用者之身分字號" />
         </td>
     </tr>
 </table>
 
-<script src="~/js/employee.js"></script>
+<br />
+<hr />
+<br />
+
+<h2>查詢結果</h2>
+
+<div id="employee-list"></div>
+
+@section Scripts{
+    <script>
+
+        var $list = $('#employee-list');
+        var $query = $('#read-employee-info');
+        var $identity = $('#employee-id-no');
+
+        function readEmployee() {
+            $.ajax({
+                type: "POST",
+                url: readEmployeeUrl,
+                dataType: "json",
+                data: {
+                    employeeInfo: {
+                        IdentityNo: $identity.val()
+                    }
+                },
+                success: function (response) {
+                    if (!response.isSuccess){
+                        return;
+                    }
+                    
+                    var row = '<ul>';
+
+                    $.each(response.result, function (key, val) {                        
+                        row += '<li>';
+                        row += val.identityNo + ', ' + val.name;
+                        row += '</li>';
+                    });
+                    
+                    row += '<ul>';
+
+                    $list.append(row);
+                },
+                error: function (thrownError) {
+                    console.log(thrownError);
+                }
+            });
+        }
+
+        $(document).ready(function () {
+            $query.off('click').on('click', readEmployee);
+        });
+
+    </script>
+}

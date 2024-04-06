@@ -1,17 +1,11 @@
 ﻿using Entity;
 
-namespace Api.Models
+namespace Web.Models
 {
-    public class ResponseResult
+    public class ApiResponseContent
     {
         public int ErrorCode { get; set; }
         public string Message { get; set; }
         public IEnumerable<Employee> Data { get; set; }
-    }
-
-    public enum ErrorCode
-    {
-        Success = 0,
-        Failed = 1 
     }
 }

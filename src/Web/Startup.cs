@@ -1,6 +1,4 @@
-﻿using Autofac;
-
-namespace Web
+﻿namespace Web
 {
     public class Startup
     {
@@ -20,12 +18,6 @@ namespace Web
             #endregion
             
             services.AddRazorPages();
-        }
-
-        //  Using a custom DI container
-        public void ConfigureContainer(ContainerBuilder builder)
-        {
-            // Configure custom container.
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

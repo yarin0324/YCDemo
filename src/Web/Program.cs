@@ -13,10 +13,6 @@ startup.ConfigureServices(builder.Services);
 
 var app = builder.Build();
 
-// Using a custom DI container.
-builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory());
-builder.Host.ConfigureContainer<ContainerBuilder>(startup.ConfigureContainer);
-
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {

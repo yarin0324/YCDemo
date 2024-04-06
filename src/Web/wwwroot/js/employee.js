@@ -17,24 +17,7 @@
     });
 }
 
-function readEmployee() {
-    $.ajax({
-        type: "POST",
-        url: readEmployeeUrl,
-        dataType: "json",
-        data: {
-            employeeInfo: {
-                IdentityNo: 'asd'
-            }
-        },
-        success: function (response) {
-            console.log(response);
-        },
-        error: function (thrownError) {
-            console.log(thrownError);
-        }
-    });
-}
+
 
 function updateEmployee() {
     $.ajax({
@@ -74,7 +57,3 @@ function deleteEmployee() {
         }
     });
 }
-
-document.addEventListener("DOMContentLoaded", function (event) {
-    createEmployee();
-});

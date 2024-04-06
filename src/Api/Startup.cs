@@ -1,4 +1,6 @@
-﻿using Dao.Utils;
+﻿using Api.Interceptor;
+using Autofac;
+using Dao.Utils;
 using Infrastructure;
 using Serilog;
 using Serilog.Events;
@@ -95,7 +97,7 @@ namespace Api
             if (env.IsDevelopment() || (env.IsProduction()))
             {
                 app.UseOpenApi();       // serve OpenAPI/Swagger documents
-                app.UseSwaggerUi3();    // serve Swagger UI
+                app.UseSwaggerUI();    // serve Swagger UI
                 app.UseDeveloperExceptionPage();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "WebApiCore v1"));
             }
@@ -137,6 +139,13 @@ namespace Api
                 context.Response.Headers.Add("X-Frame-Options", "SAMEORIGIN");
                 await next();
             });
+        }
+
+        public void ConfigureContainer(ContainerBuilder builder)
+        {
+            var assemblyName = "Service";
+
+            AopServiceExtension.AopServiceBootstrap(builder, assemblyName);
         }
     }
 }
