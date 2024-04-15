@@ -1,6 +1,6 @@
 # YCDemo
 
-**以3-tier architecture規劃半前後端分離專案，並以IoC/DI方式斷開各層間之耦合。**
+**以3-layer architecture規劃半前後端分離專案，並以IoC/DI方式斷開各層間之耦合。**
 
 **整體拆分為Web、API、Service、Dao、Entity、Infrastructure等六部分，分別說明如下:**
 
